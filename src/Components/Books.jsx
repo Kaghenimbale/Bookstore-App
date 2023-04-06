@@ -3,18 +3,22 @@ import React from 'react';
 const Books = () => {
   const books = [
     {
+      id: 1,
       title: 'Html Mastering',
       author: 'James Arthur',
     },
     {
+      id: 2,
       title: 'CSS Mastering',
       author: 'James Williams',
     },
     {
+      id: 3,
       title: 'JavaScript Mastering',
       author: 'Jane Doe',
     },
     {
+      id: 4,
       title: 'React Mastering',
       author: 'John Doe',
     },
@@ -22,16 +26,14 @@ const Books = () => {
   return (
     <div className="books-container">
       <div className="books">
-        {books.map((book) => {
-          return (
-            <ul>
-              <li>
-                <h2>{book.title}</h2>
-                <p>{book.author}</p>
-              </li>
-            </ul>
-          );
-        })}
+        <ul>
+          {books.map((book) => (
+            <li key={book.id}>
+              <h2>{book.title}</h2>
+              <p>{book.author}</p>
+            </li>
+          ))}
+        </ul>
       </div>
       <div>
         <form action="#">
