@@ -71,44 +71,41 @@ In order to run this project you need:
 
 Clone this repository to your desired folder:
 
-- cd my-folder
-- git clone [here](https://github.com/Kaghenimbale/bookstore-app.git)
+```sh
+  git clone https://github.com/Kaghenimbale/bookstore-app.git
+  cd bookstore-app
+```
 
 ### Install
 
-Install this project with:
+Run this command to install all project dependancies
 
-Install Node Modules
-
-- npm install
+```sh
+  npm install
+```
 
 ### Usage
 
 To run the project, execute the following command:
 
-Start the development server
-
-- npm start
+```jsx
+  npm start /* to Start the development server */
+```
 
 ### Run tests
 
-To run the project, execute the following command:
-
-- npm run start
-- in order to start a server and deploy the project localy
-
 To run tests, run the following command:
 
-- cd my-project
-- npx hint .
-- npx stylelint "\*_/_.{css,scss}"
+```js
+  npx hint . /* check html linters */
+  npx stylelint "\*_/_.{css,scss}" /* check css/sass linters */
+```
 
 ### Deployment
 
 This project has not been deployed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 <!-- AUTHORS -->
 
 ## 👥 Authors <a name="authors"></a>
