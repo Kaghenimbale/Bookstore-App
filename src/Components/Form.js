@@ -1,45 +1,37 @@
-/* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
-import { useForm } from 'react-hook-form';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
 import { addBook } from '../redux/books/booksSlice';
 
 const Form = () => {
   const dispatch = useDispatch();
+  const [author, setAuthor] = useState('');
+  const [title, setTitle] = useState('');
 
-  const schema = yup.object().shape({
-    title: yup.string().required(),
-    author: yup.string().required(),
-  });
-
-  const { register, reset, handleSubmit } = useForm({
-    resolver: yupResolver(schema),
-  });
-
-  const onSubmit = (data) => {
-    dispatch(
-      addBook({
-        item_id: Date.now(),
-        ...data,
-        category: 'Fiction',
-      }),
-    );
-    reset();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const obj = {
+      item_id: Date.now(),
+      title,
+      author,
+      category: 'Fiction',
+    };
+    dispatch(addBook(obj));
+    setAuthor('');
+    setTitle('');
   };
 
   return (
     <div>
       <div>
-        <form action="#" onSubmit={handleSubmit(onSubmit)}>
+        <form action="#" onSubmit={handleSubmit}>
           <label htmlFor="bookname">
             <input
               type="text"
               name="bookname"
               id="input"
               placeholder="Book title"
-              {...register('title')}
+              onChange={(e) => setTitle(e.target.value)}
+              value={title}
             />
           </label>
           <label htmlFor="bookauthor">
@@ -48,7 +40,8 @@ const Form = () => {
               name="bookauthor"
               id="input"
               placeholder="Author name"
-              {...register('author')}
+              onChange={(e) => setAuthor(e.target.value)}
+              value={author}
             />
           </label>
           <button type="submit">Add book</button>
