@@ -1,61 +1,35 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { removeBook } from '../redux/books/booksSlice';
+import Form from './Form';
 
 const Books = () => {
-  const books = [
-    {
-      id: 1,
-      title: 'Html Mastering',
-      author: 'James Arthur',
-    },
-    {
-      id: 2,
-      title: 'CSS Mastering',
-      author: 'James Williams',
-    },
-    {
-      id: 3,
-      title: 'JavaScript Mastering',
-      author: 'Jane Doe',
-    },
-    {
-      id: 4,
-      title: 'React Mastering',
-      author: 'John Doe',
-    },
-  ];
+  const { books } = useSelector((state) => state);
+
+  const dispatch = useDispatch();
+
   return (
     <div className="books-container">
       <div className="books">
         <ul>
-          {books.map((book) => (
-            <li key={book.id}>
+          {books.booksItem.map((book) => (
+            <li key={book.item_id}>
+              <p>{book.category}</p>
               <h2>{book.title}</h2>
               <p>{book.author}</p>
+              <div className="btns">
+                <button
+                  type="button"
+                  onClick={() => dispatch(removeBook(book.item_id))}
+                >
+                  remove
+                </button>
+              </div>
             </li>
           ))}
         </ul>
       </div>
-      <div>
-        <form action="#">
-          <label htmlFor="bookname">
-            <input
-              type="text"
-              name="bookname"
-              id="input"
-              placeholder="Book title"
-            />
-          </label>
-          <label htmlFor="bookauthor">
-            <input
-              type="text"
-              name="bookauthor"
-              id="input"
-              placeholder="Author name"
-            />
-          </label>
-          <button type="submit">Add book</button>
-        </form>
-      </div>
+      <Form />
     </div>
   );
 };
