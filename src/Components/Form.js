@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addBook } from '../redux/books/booksSlice';
+import { addNewBook } from '../redux/books/booksSlice';
 
 const Form = () => {
   const dispatch = useDispatch();
@@ -15,7 +15,7 @@ const Form = () => {
       author,
       category: 'Fiction',
     };
-    dispatch(addBook(obj));
+    dispatch(addNewBook(obj));
     setAuthor('');
     setTitle('');
   };
@@ -29,6 +29,7 @@ const Form = () => {
               type="text"
               name="bookname"
               id="input"
+              required
               placeholder="Book title"
               onChange={(e) => setTitle(e.target.value)}
               value={title}
@@ -39,6 +40,7 @@ const Form = () => {
               type="text"
               name="bookauthor"
               id="input"
+              required
               placeholder="Author name"
               onChange={(e) => setAuthor(e.target.value)}
               value={author}
