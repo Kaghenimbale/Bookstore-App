@@ -29,6 +29,7 @@ const Form = () => {
               type="text"
               name="bookname"
               id="input"
+              required
               placeholder="Book title"
               onChange={(e) => setTitle(e.target.value)}
               value={title}
@@ -39,6 +40,7 @@ const Form = () => {
               type="text"
               name="bookauthor"
               id="input"
+              required
               placeholder="Author name"
               onChange={(e) => setAuthor(e.target.value)}
               value={author}

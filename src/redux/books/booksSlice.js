@@ -19,8 +19,20 @@ export const addNewBook = createAsyncThunk(
   'posts/addNewPosts',
   async (initialPost) => {
     try {
-      const response = await axios.post(url, initialPost);
-      return response.data;
+      await axios.post(url, initialPost);
+      return initialPost;
+    } catch (error) {
+      return error.message;
+    }
+  },
+);
+
+export const deleteBook = createAsyncThunk(
+  'posts/deleteBook',
+  async (itemId) => {
+    try {
+      await axios.delete(`${url}/${itemId}`);
+      return itemId;
     } catch (error) {
       return error.message;
     }
@@ -36,34 +48,32 @@ const initialState = {
 const bookSlice = createSlice({
   name: 'book',
   initialState,
-  reducers: {
-    addBook: (state, action) => {
-      state.booksItem.push(action.payload);
-    },
-    removeBook: (state, action) => {
-      const booksItem = state.booksItem.filter(
-        (item) => item.item_id !== action.payload,
-      );
-      return {
-        ...state,
-        booksItem,
-      };
-    },
-  },
   extraReducers(builder) {
     builder
       .addCase(fetchPosts.pending, (state) => ({
         ...state,
         isLoading: true,
       }))
-      .addCase(fetchPosts.fulfilled, (state, action) => ({
+      .addCase(fetchPosts.fulfilled, (state, action) => {
+        const newData = Object.keys(action.payload).map((item) => {
+          const data = action.payload[item][0];
+          return {
+            item_id: item,
+            author: data.author,
+            title: data.title,
+            category: data.category,
+          };
+        });
+        return {
+          ...state,
+          isLoading: false,
+          booksItem: newData,
+        };
+      })
+      .addCase(fetchPosts.rejected, (state, action) => ({
         ...state,
         isLoading: false,
-        booksItem: action.payload,
-      }))
-      .addCase(fetchPosts.rejected, (state) => ({
-        ...state,
-        isLoading: false,
+        error: action.payload,
       }))
       .addCase(addNewBook.pending, (state) => ({
         ...state,
@@ -71,16 +81,33 @@ const bookSlice = createSlice({
       }))
       .addCase(addNewBook.fulfilled, (state, action) => ({
         ...state,
-        booksItem: action.payload,
         isLoading: false,
+        booksItem: [...state.booksItem, action.payload],
       }))
       .addCase(addNewBook.rejected, (state) => ({
+        ...state,
+        booksItem: [],
+        isLoading: false,
+      }))
+      .addCase(deleteBook.pending, (state) => ({
+        ...state,
+        isLoading: true,
+      }))
+      .addCase(deleteBook.fulfilled, (state, action) => {
+        const newBooks = state.booksItem.filter(
+          (item) => item.item_id !== action.payload,
+        );
+        return {
+          ...state,
+          isLoading: false,
+          booksItem: newBooks,
+        };
+      })
+      .addCase(deleteBook.rejected, (state) => ({
         ...state,
         isLoading: false,
       }));
   },
 });
-
-export const { addBook, removeBook } = bookSlice.actions;
 
 export default bookSlice.reducer;
