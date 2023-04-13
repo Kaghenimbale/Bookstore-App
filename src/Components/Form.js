@@ -6,6 +6,7 @@ const Form = () => {
   const dispatch = useDispatch();
   const [author, setAuthor] = useState('');
   const [title, setTitle] = useState('');
+  const [category, setCategory] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -13,11 +14,12 @@ const Form = () => {
       item_id: Date.now(),
       title,
       author,
-      category: 'Fiction',
+      category,
     };
     dispatch(addNewBook(obj));
     setAuthor('');
     setTitle('');
+    setCategory('');
   };
 
   return (
@@ -35,6 +37,17 @@ const Form = () => {
               value={title}
             />
           </label>
+          <select
+            required
+            name="category"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            <option value="Action">Action</option>
+            <option value="Animation">Animation</option>
+            <option value="Fiction">Science Fiction</option>
+            <option value="Legend">Legend</option>
+          </select>
           <label htmlFor="bookauthor">
             <input
               type="text"
