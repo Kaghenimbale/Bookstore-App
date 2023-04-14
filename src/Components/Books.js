@@ -38,14 +38,15 @@ const Books = () => {
                   <h2 className="title">{book.title}</h2>
                   <p className="author">{book.author}</p>
                   <div className="btns">
-                    <button type="button">Comments</button>
+                    <button className="btn" type="button">Comments</button>
                     <button
                       type="button"
+                      className="btn"
                       onClick={() => dispatch(deleteBook(book.item_id))}
                     >
                       Remove
                     </button>
-                    <button type="button">Edit</button>
+                    <button className="btn" type="button">Edit</button>
                   </div>
                 </div>
                 <div className="box">
@@ -59,6 +60,17 @@ const Books = () => {
                     <div className="number">
                       <h2>{index % 2 === 0 ? '64%' : '90%'}</h2>
                       <p>Completed</p>
+                    </div>
+                  </div>
+                  <div className="chapters">
+                    <div className="chapter">
+                      <p>CURRENT CHAPTER</p>
+                      <p>{index % 2 !== 0 ? 'Chapter 17' : 'Introduction'}</p>
+                    </div>
+                    <div className="chapter-btn">
+                      <button className="chap-btn" type="button">
+                        UPDATE PROGRESS
+                      </button>
                     </div>
                   </div>
                 </div>

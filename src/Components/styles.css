@@ -60,6 +60,16 @@ ul {
   background: rgb(250, 250, 250);
 }
 
+.box {
+  display: flex;
+  gap: 2rem;
+}
+
+.box .percent:nth-child(1) {
+  border-right: 2px solid lightgray;
+  padding-right: 2rem;
+}
+
 .book-item {
   background: white;
   list-style: none;
@@ -70,7 +80,34 @@ ul {
   justify-content: space-between;
 }
 
-.book-item button {
+.number p {
+  margin: 0;
+  color: darkgray;
+}
+
+.chap-btn {
+  background: #0290ff;
+  border: none;
+  color: white;
+  padding: 0.6rem 1rem;
+  font-weight: 200;
+  border-radius: 3px;
+}
+
+.chapter p:nth-child(1) {
+  color: darkgray;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 0.8rem;
+}
+
+.chapter p:nth-child(2) {
+  font-family: 'Times New Roman', Times, serif;
+  color: #121212;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.book-item .btn {
   border: none;
   background: none;
   color: #4386bf;
@@ -120,11 +157,6 @@ ul {
   display: flex;
   flex-direction: column;
   gap: 0.1rem;
-}
-
-.number p {
-  margin: 0;
-  color: darkgray;
 }
 
 .number h2 {
