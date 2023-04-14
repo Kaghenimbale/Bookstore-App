@@ -187,3 +187,8 @@ ul {
   align-items: center;
   justify-content: center;
 }
+
+.loaderstyle {
+  color: black;
+  width: 10px;
+}

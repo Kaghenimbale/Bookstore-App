@@ -28,7 +28,7 @@ const Books = () => {
         <ul className="list-books">
           {books.isLoading ? (
             <div className="loader">
-              <MoonLoader color="black" width="30px" />
+              <MoonLoader className="loaderstyle" />
             </div>
           ) : (
             books.booksItem?.map((book, index) => (
@@ -38,7 +38,9 @@ const Books = () => {
                   <h2 className="title">{book.title}</h2>
                   <p className="author">{book.author}</p>
                   <div className="btns">
-                    <button className="btn" type="button">Comments</button>
+                    <button className="btn" type="button">
+                      Comments
+                    </button>
                     <button
                       type="button"
                       className="btn"
@@ -46,7 +48,9 @@ const Books = () => {
                     >
                       Remove
                     </button>
-                    <button className="btn" type="button">Edit</button>
+                    <button className="btn" type="button">
+                      Edit
+                    </button>
                   </div>
                 </div>
                 <div className="box">
