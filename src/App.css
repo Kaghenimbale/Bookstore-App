@@ -1,46 +1,29 @@
-.content {
-  width: 80vw;
+.job {
+  background: red;
 }
 
-.logo {
-  color: rgb(0, 136, 255);
+.percent {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
-.profile-container {
-  border: 1px solid lightgrey;
-  padding: 1rem;
+.progress {
+  background: conic-gradient(#4386bf 3.6deg, #ededed 0deg);
+  position: relative;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
-}
-
-.profile {
-  font-size: 1.5rem;
-  color: rgb(0, 136, 255);
-}
-
-.navbar {
-  background: white;
-  box-shadow: 0 1px 3px rgb(179, 179, 179);
-  border: none;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 1rem 2rem;
+  justify-content: center;
 }
 
-.navlink {
-  display: flex;
-  align-items: center;
-}
-
-.navlists {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  list-style: none;
-}
-
-.navlist {
-  font-size: 1.5rem;
-  text-decoration: none;
-  color: gray;
+.progress::before {
+  content: '';
+  position: absolute;
+  height: 70px;
+  width: 70px;
+  background: #fff;
+  border-radius: 50%;
 }

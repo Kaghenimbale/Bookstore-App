@@ -3,5 +3,5 @@ body {
   padding: 5rem 0 0 0;
   display: flex;
   justify-content: center;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background: #f5f6fa;
 }
