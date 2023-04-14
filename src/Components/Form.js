@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import './styles.css';
+import './form.css';
 import { addNewBook } from '../redux/books/booksSlice';
 
 const Form = () => {
@@ -24,13 +24,15 @@ const Form = () => {
   };
 
   return (
-    <div>
+    <div className="form-container">
+      <h2 className="add-book">ADD NEW BOOK</h2>
       <div>
-        <form action="#" onSubmit={handleSubmit}>
+        <form className="form" action="#" onSubmit={handleSubmit}>
           <label htmlFor="bookname">
             <input
               type="text"
               name="bookname"
+              className="input"
               id="input"
               required
               placeholder="Book title"
@@ -38,20 +40,10 @@ const Form = () => {
               value={title}
             />
           </label>
-          <select
-            required
-            name="category"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-          >
-            <option value="Action">Action</option>
-            <option value="Animation">Animation</option>
-            <option value="Fiction">Science Fiction</option>
-            <option value="Legend">Legend</option>
-          </select>
           <label htmlFor="bookauthor">
             <input
               type="text"
+              className="input"
               name="bookauthor"
               id="input"
               required
@@ -60,7 +52,19 @@ const Form = () => {
               value={author}
             />
           </label>
-          <button type="submit">Add book</button>
+          <select
+            required
+            name="category"
+            className="input"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            <option value="Action">Action</option>
+            <option value="Animation">Animation</option>
+            <option value="Fiction">Science Fiction</option>
+            <option value="Legend">Legend</option>
+          </select>
+          <button className="submit-btn" type="submit">Add book</button>
         </form>
       </div>
     </div>

@@ -28,7 +28,7 @@ const Books = () => {
         <ul className="list-books">
           {books.isLoading ? (
             <div className="loader">
-              <MoonLoader color="black" />
+              <MoonLoader color="black" width="30px" />
             </div>
           ) : (
             books.booksItem?.map((book, index) => (
