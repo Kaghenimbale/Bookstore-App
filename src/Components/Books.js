@@ -33,7 +33,7 @@ const Books = () => {
           ) : (
             books.booksItem?.map((book, index) => (
               <li className="book-item" key={book.item_id}>
-                <div>
+                <div className="description">
                   <p className="category">{book.category}</p>
                   <h2 className="title">{book.title}</h2>
                   <p className="author">{book.author}</p>
